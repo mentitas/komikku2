@@ -24,6 +24,7 @@ class ReaderPreferences(
     // SY <--
 
     fun flashOnPageChange() = preferenceStore.getBoolean("pref_reader_flash", false)
+    fun nativeFlash() = preferenceStore.getBoolean("pref_reader_native_flash", false)
 
     fun flashDurationMillis() = preferenceStore.getInt("pref_reader_flash_duration", MILLI_CONVERSION)
 

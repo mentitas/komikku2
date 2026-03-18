@@ -328,7 +328,7 @@ abstract class PagerViewer(
         val position = adapter.joinedItems.indexOfFirst { it.first == page || it.second == page }
         if (position != -1) {
             val currentPosition = pager.currentItem
-            pager.setCurrentItem(position, true)
+            pager.setCurrentItem(position, false)
             // manually call onPageChange since ViewPager listener is not triggered in this case
             if (currentPosition == position) {
                 onPageChange(position)
@@ -369,7 +369,7 @@ abstract class PagerViewer(
             if (holder != null && config.navigateToPan && holder.canPanRight()) {
                 holder.panRight()
             } else {
-                pager.setCurrentItem(pager.currentItem + 1, config.usePageTransitions)
+                pager.setCurrentItem(pager.currentItem + 1, false)
             }
         }
     }
@@ -383,7 +383,7 @@ abstract class PagerViewer(
             if (holder != null && config.navigateToPan && holder.canPanLeft()) {
                 holder.panLeft()
             } else {
-                pager.setCurrentItem(pager.currentItem - 1, config.usePageTransitions)
+                pager.setCurrentItem(pager.currentItem - 1, false)
             }
         }
     }

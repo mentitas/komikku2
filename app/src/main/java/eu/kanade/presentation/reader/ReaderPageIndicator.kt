@@ -26,17 +26,16 @@ fun ReaderPageIndicator(
     if (currentPage.isEmpty() || totalPages <= 0) return
 
     val text = "$currentPage / $totalPages"
-
     val style = TextStyle(
         // KMK -->
-        color = MaterialTheme.colorScheme.primary,
+        color = Color(0, 0, 0),
         // KMK <--
         fontSize = MaterialTheme.typography.bodySmall.fontSize,
         fontWeight = FontWeight.Bold,
         letterSpacing = 1.sp,
     )
     val strokeStyle = style.copy(
-        color = Color(45, 45, 45),
+        color = Color(255, 255, 255),
         drawStyle = Stroke(width = 4f),
     )
 

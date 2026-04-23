@@ -31,6 +31,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -44,6 +45,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -342,9 +344,10 @@ class ReaderActivity : BaseActivity() {
                         // SY <--
                         totalPages = state.totalPages,
                         modifier = Modifier
-                            .align(Alignment.BottomCenter)
-                            .navigationBarsPadding(),
-                    )
+                            .align(Alignment.BottomEnd)
+                            .rotate(90f)
+                            .padding(0.dp, 30.dp),
+                        )
                 }
 
                 ContentOverlay(state = state)

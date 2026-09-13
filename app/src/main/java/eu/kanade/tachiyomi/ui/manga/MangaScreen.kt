@@ -2,7 +2,6 @@ package eu.kanade.tachiyomi.ui.manga
 
 import android.Manifest
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.compose.BackHandler
@@ -279,8 +278,8 @@ class MangaScreen(
             onChapterClicked = { openChapter(context, it) },
             onDownloadChapter = screenModel::runChapterDownloadActions.takeIf { !successState.source.isLocalOrStub() },
             onAddToLibraryClicked = {
-                screenModel.toggleFavorite()
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                screenModel.toggleFavorite()
             },
             // SY -->
             onWebViewClicked = {
@@ -421,7 +420,7 @@ class MangaScreen(
                         context,
                         navigator,
                         successState.mergedData,
-                        action = { _, nav, manga, source -> screenModel.openMangaFolder(source, manga) },
+                        action = { _, _, manga, source -> screenModel.openMangaFolder(source, manga) },
                         titleRes = KMR.strings.action_open_folder,
                     )
                 }
@@ -693,12 +692,7 @@ class MangaScreen(
         try {
             getMangaUrl(manga_, source_)?.let { url ->
                 val intent = url.toUri().toShareIntent(context, type = "text/plain")
-                context.startActivity(
-                    Intent.createChooser(
-                        intent,
-                        context.stringResource(MR.strings.action_share),
-                    ),
-                )
+                context.startActivity(intent)
             }
         } catch (e: Exception) {
             context.toast(e.message)
